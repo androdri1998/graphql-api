@@ -6,10 +6,11 @@ import { buildSchema } from "type-graphql";
 
 import { UsersResolver } from "./src/users/infra/resolvers/Users.resolver";
 import { ProductsResolver } from "./src/products/infra/resolvers/Products.resolver";
+import { ProfilesResolver } from "./src/profiles/infra/resolvers/Profiles.resolver";
 
 const main = async () => {
   const schema = await buildSchema({
-    resolvers: [UsersResolver, ProductsResolver],
+    resolvers: [UsersResolver, ProductsResolver, ProfilesResolver],
     emitSchemaFile: path.resolve(__dirname, "schema.gql"),
   });
 

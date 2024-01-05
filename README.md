@@ -81,3 +81,26 @@ type Query {
 ### Queries available
 
 - featureProduct: Product
+
+## Profiles
+
+```
+type Profile {
+  id: ID!
+  name: String!
+}
+
+type Query {
+  profile(data: SearchProfileInput!): Profile
+  profiles: [Profile]!
+}
+
+input SearchProfileInput {
+  id: ID!
+}
+```
+
+### Queries available
+
+- profile(data: SearchProfileInput!): Profile
+- profiles: [Profile]!
