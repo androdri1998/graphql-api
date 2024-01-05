@@ -1,16 +1,14 @@
 import { FieldResolver, Float, Query, Resolver, Root } from "type-graphql";
-import { User } from "../dtos/models/User.model";
-import { UserInput } from "../dtos/inputs/User.input";
 import { Product } from "../dtos/models/Product.model";
 
 @Resolver(() => Product)
 export class ProductsResolver {
   @Query(() => Product, { nullable: true })
-  async availableProduct() {
+  async featureProduct() {
     const product = {
       name: "book",
       price: 10,
-      discount: 2,
+      discount: 0.2,
     };
 
     return product;
@@ -18,6 +16,7 @@ export class ProductsResolver {
 
   @FieldResolver((type) => Float)
   priceWithDiscount(@Root() product: Product) {
-    return product.price - (product.discount || 0);
+    const discount = product.price * (product.discount || 0);
+    return product.price - discount;
   }
 }
