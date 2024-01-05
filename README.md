@@ -42,6 +42,12 @@ input SearchUserInput {
   id: ID!
 }
 
+enum UserStatus {
+  ACTIVE
+  BLOCKED
+  INACTIVE
+}
+
 type User {
   age: Int
   email: String!
@@ -49,6 +55,7 @@ type User {
   name: String!
   profile: Profile!
   salary: Float
+  status: UserStatus!
   vip: Boolean
 }
 
