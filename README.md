@@ -31,4 +31,4 @@ Run `$ npm run compile` to compile application.
 
 ## Start in watching mode
 
-Run `$ npm run dev`to start application in watching mode.
+Run `$ npm run dev` to start application in watching mode.
