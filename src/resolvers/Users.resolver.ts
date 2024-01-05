@@ -1,12 +1,17 @@
 import { Query, Resolver } from "type-graphql";
 import { User } from "../models/User.model";
 
-const users = [];
-
 @Resolver(() => User)
 export class UsersResolver {
-  @Query(() => [User])
-  async getUsers() {
-    return users;
+  @Query(() => User, { nullable: true })
+  async loggedUser() {
+    return {
+      id: 1,
+      name: "teste",
+      email: "some email",
+      age: 21,
+      salary: 1000,
+      vip: false,
+    };
   }
 }
