@@ -1,4 +1,22 @@
-import { ID, Int, Float, Field, ObjectType } from "type-graphql";
+import {
+  ID,
+  Int,
+  Float,
+  Field,
+  ObjectType,
+  registerEnumType,
+} from "type-graphql";
+
+export enum UserStatus {
+  ACTIVE = "ACTIVE",
+  INACTIVE = "INACTIVE",
+  BLOCKED = "BLOCKED",
+}
+
+registerEnumType(UserStatus, {
+  name: "UserStatus",
+  description: "User status",
+});
 
 @ObjectType()
 export class User {
@@ -19,4 +37,7 @@ export class User {
 
   @Field({ nullable: true })
   vip: boolean;
+
+  @Field((type) => UserStatus)
+  status: UserStatus;
 }

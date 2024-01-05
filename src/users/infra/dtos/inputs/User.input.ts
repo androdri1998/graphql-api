@@ -1,4 +1,5 @@
 import { ID, Int, Float, Field, ObjectType, InputType } from "type-graphql";
+import { UserStatus } from "../models/User.model";
 
 @InputType()
 export class UserInput {
@@ -22,4 +23,7 @@ export class UserInput {
 
   @Field((type) => ID)
   profile_id: string;
+
+  @Field((type) => UserStatus)
+  status: UserStatus;
 }
