@@ -32,3 +32,52 @@ Run `$ npm run compile` to compile application.
 ## Start application in watching mode
 
 Run `$ npm run dev` to start application in watching mode.
+
+# Modules
+
+## Users
+
+```
+type Query {
+
+  user(data: SearchUserInput!): User
+  users: [User]!
+}
+
+input SearchUserInput {
+  id: ID!
+}
+
+type User {
+  age: Int
+  email: String!
+  id: ID!
+  name: String!
+  salary: Float
+  vip: Boolean
+}
+```
+
+### Queries available
+
+- user(data: SearchUserInput!): User
+- users: [User]!
+
+## Products
+
+```
+type Product {
+  discount: Float
+  name: String!
+  price: Float!
+  priceWithDiscount: Float!
+}
+
+type Query {
+  featureProduct: Product
+}
+```
+
+### Queries available
+
+- featureProduct: Product
