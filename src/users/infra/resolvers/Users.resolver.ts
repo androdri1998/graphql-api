@@ -7,7 +7,6 @@ import { users as usersData } from "../database";
 import UsersInMemoryRepository from "../repositories/UsersInMemoryRepository";
 import FindUsersService from "../../services/implementations/FindUsers.service";
 import ConvertSalaryService from "../../services/implementations/ConvertSalary.service";
-import { UserDTO } from "../../dtos/User.dto";
 import FindUserService from "../../services/implementations/FindUser.service";
 import ProfilesInMemoryRepository from "../../../profiles/infra/repositories/ProfilesInMemoryRepository";
 import { profiles as profileData } from "../../../profiles/infra/database";
@@ -38,7 +37,8 @@ export class UsersResolver {
   salary(@Root() user: UserInput) {
     const convertSalaryService = new ConvertSalaryService();
 
-    const salary = convertSalaryService.execute(user as unknown as UserDTO);
+    const salary = convertSalaryService.execute(user);
+
     return salary;
   }
 
