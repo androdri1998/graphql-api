@@ -1,6 +1,6 @@
 # graphql-api
 
-This is a project to practice graphql api and node.js
+This is a project to practice GraphQl and Node.js
 
 # Libs
 
@@ -38,12 +38,6 @@ Run `$ npm run dev` to start application in watching mode.
 ## Users
 
 ```
-type Query {
-
-  user(data: SearchUserInput!): User
-  users: [User]!
-}
-
 input SearchUserInput {
   id: ID!
 }
@@ -53,8 +47,14 @@ type User {
   email: String!
   id: ID!
   name: String!
+  profile: Profile!
   salary: Float
   vip: Boolean
+}
+
+type Query {
+  user(data: SearchUserInput!): User
+  users: [User]!
 }
 ```
 
@@ -90,13 +90,13 @@ type Profile {
   name: String!
 }
 
+input SearchProfileInput {
+  id: ID!
+}
+
 type Query {
   profile(data: SearchProfileInput!): Profile
   profiles: [Profile]!
-}
-
-input SearchProfileInput {
-  id: ID!
 }
 ```
 

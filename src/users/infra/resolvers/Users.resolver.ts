@@ -9,6 +9,10 @@ import FindUsersService from "../../services/implementations/FindUsers.service";
 import ConvertSalaryService from "../../services/implementations/ConvertSalary.service";
 import { UserDTO } from "../../dtos/User.dto";
 import FindUserService from "../../services/implementations/FindUser.service";
+import ProfilesInMemoryRepository from "../../../profiles/infra/repositories/ProfilesInMemoryRepository";
+import { profiles as profileData } from "../../../profiles/infra/database";
+import FindProfileService from "../../../profiles/services/implementations/FindProfile.service";
+import { Profile } from "../../../profiles/infra/dtos/models/Profile.model";
 
 @Resolver(() => User)
 export class UsersResolver {
@@ -36,5 +40,14 @@ export class UsersResolver {
 
     const salary = convertSalaryService.execute(user as unknown as UserDTO);
     return salary;
+  }
+
+  @FieldResolver(() => Profile)
+  async profile(@Root() user: UserInput) {
+    const profilesRepository = new ProfilesInMemoryRepository(profileData);
+    const findProfileService = new FindProfileService(profilesRepository);
+
+    const profileFound = await findProfileService.execute(user.profile_id);
+    return profileFound;
   }
 }

@@ -19,4 +19,7 @@ export class UserInput {
 
   @Field()
   vip: boolean;
+
+  @Field((type) => ID)
+  profile_id: string;
 }
