@@ -11,12 +11,12 @@ export class User {
   @Field()
   email: string;
 
-  @Field((type) => Int)
+  @Field((type) => Int, { nullable: true })
   age: number;
 
-  @Field((type) => Float)
+  @Field((type) => Float, { nullable: true })
   salary: number;
 
-  @Field()
+  @Field({ nullable: true })
   vip: boolean;
 }
