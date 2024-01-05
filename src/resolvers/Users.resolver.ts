@@ -1,6 +1,7 @@
-import { FieldResolver, Query, Resolver, Root } from "type-graphql";
+import { Arg, FieldResolver, Query, Resolver, Root } from "type-graphql";
 import { User } from "../dtos/models/User.model";
 import { UserInput } from "../dtos/inputs/User.input";
+import { SearchUserInput } from "../dtos/inputs/SearchUser.input";
 
 const users = {
   1: {
@@ -12,6 +13,7 @@ const users = {
     id: 2,
     name: "teste 2",
     email: "some email 2",
+    salary_real: 1002,
   },
   3: {
     id: 3,
@@ -23,17 +25,10 @@ const users = {
 @Resolver(() => User)
 export class UsersResolver {
   @Query(() => User, { nullable: true })
-  async loggedUser() {
-    const user = {
-      id: 1,
-      name: "teste",
-      email: "some email",
-      age: 21,
-      salary_real: 1001,
-      vip: false,
-    };
+  async user(@Arg("data") user: SearchUserInput) {
+    const foundUser = users[user.id];
 
-    return user;
+    return foundUser;
   }
 
   @Query(() => [User], { nullable: "items" })

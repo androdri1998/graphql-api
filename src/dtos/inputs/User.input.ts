@@ -1,6 +1,6 @@
-import { ID, Int, Float, Field, ObjectType } from "type-graphql";
+import { ID, Int, Float, Field, ObjectType, InputType } from "type-graphql";
 
-@ObjectType()
+@InputType()
 export class UserInput {
   @Field((type) => ID)
   readonly id: string;
