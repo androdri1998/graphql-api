@@ -1,4 +1,4 @@
-# graphql-api
+# products-graphql-api
 
 This is a project to practice GraphQl and Node.js
 
@@ -35,41 +35,6 @@ Run `$ npm run dev` to start application in watching mode.
 
 # Modules
 
-## Users
-
-```
-input SearchUserInput {
-  id: ID!
-}
-
-enum UserStatus {
-  ACTIVE
-  BLOCKED
-  INACTIVE
-}
-
-type User {
-  age: Int
-  email: String!
-  id: ID!
-  name: String!
-  profile: Profile!
-  salary: Float
-  status: UserStatus!
-  vip: Boolean
-}
-
-type Query {
-  user(data: SearchUserInput!): User
-  users: [User]!
-}
-```
-
-### Queries available
-
-- user(data: SearchUserInput!): User
-- users: [User]!
-
 ## Products
 
 ```
@@ -88,26 +53,3 @@ type Query {
 ### Queries available
 
 - featureProduct: Product
-
-## Profiles
-
-```
-type Profile {
-  id: ID!
-  name: String!
-}
-
-input SearchProfileInput {
-  id: ID!
-}
-
-type Query {
-  profile(data: SearchProfileInput!): Profile
-  profiles: [Profile]!
-}
-```
-
-### Queries available
-
-- profile(data: SearchProfileInput!): Profile
-- profiles: [Profile]!
