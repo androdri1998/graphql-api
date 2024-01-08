@@ -1,6 +1,6 @@
 # products-graphql-api
 
-This is a project to practice GraphQl and Node.js
+This is a project to practice queries GraphQl and Node.js
 
 # Libs
 
